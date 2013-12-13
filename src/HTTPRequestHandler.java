@@ -1,4 +1,5 @@
 
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -39,7 +40,7 @@ public class HTTPRequestHandler {
  
 	public static void main(String[] args) throws Exception {
  
-		HTTPRequestHandler http = new HTTPRequestHandler("http://www.google.com/search","q=gaurav");
+HTTPRequestHandler http = new HTTPRequestHandler("http://www.google.com/search","q=gaurav");
  
 		System.out.println("Testing 1 - Send Http GET request");
 		http.sendGet();
