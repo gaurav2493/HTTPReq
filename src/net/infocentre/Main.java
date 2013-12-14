@@ -9,7 +9,9 @@ public class Main {
 		  		  
 			List<String> cookies=InfoAuthenticator.getCookies();
 			//printNotices(cookies);
-			printANotice(cookies);
+			//printANotice(cookies);
+			FileDownloader fd=new FileDownloader(cookies,"10654");
+			fd.saveDownloadTo("D:\\");
 		
 	  }	  
 
