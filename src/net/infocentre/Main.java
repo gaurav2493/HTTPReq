@@ -10,8 +10,9 @@ public class Main {
 			List<String> cookies=InfoAuthenticator.getCookies();
 			//printNotices(cookies);
 			//printANotice(cookies);
-			FileDownloader fd=new FileDownloader(cookies,"10654");
-			fd.saveDownloadTo("D:\\");
+			//FileDownloader fd=new FileDownloader(cookies,"10622");
+			//fd.saveDownloadTo("D:\\");
+			printFiles(cookies);
 		
 	  }	  
 
@@ -47,12 +48,34 @@ static void printANotice(List<String> cookies)
 	while(true)
 	{
 		System.out.println("Enter Notice ID to view Notice");
-		noticeId=5467;
+		noticeId=5462;
 		String result = http.GetPageContent(http.getLink(noticeId));
 		http.parseContents(result);
 		break;
 	}
 	sc.close();
   }
+static void printFiles(List<String> cookies)
+{
+	ViewFilesPageReader pr=new ViewFilesPageReader();
+	pr.setCookies(cookies);
+	int pageno=0;
+	Scanner sc = new Scanner(System.in);
+	while(true)
+	{
+		//System.out.println("Enter page no or 0 to quit");
+		pageno=1;
+		if(pageno==0)
+			break;
+		else
+		{
+			String result = pr.GetPageContent(pr.getLink(pageno));
+			//System.out.println(result);
+			pr.parseContents(result);
+		}
+		break;
+	}
+	sc.close();
+}
 }
 
