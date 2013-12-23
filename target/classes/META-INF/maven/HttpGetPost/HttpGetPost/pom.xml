@@ -7,6 +7,9 @@
     <sourceDirectory>src</sourceDirectory>
 
   </build>
+  <properties>
+       <tomcat.dbcp.version>7.0.27</tomcat.dbcp.version>
+  </properties>
      <dependencies>
         <dependency>
 	<groupId>org.apache.httpcomponents</groupId>
@@ -33,5 +36,11 @@
   <artifactId>gmail4j</artifactId>
   <version>0.4</version>
 </dependency>
+<!-- Tomcat JDBC -->
+<dependency>
+    <groupId>org.apache.tomcat</groupId>
+	      <artifactId>tomcat-jdbc</artifactId>
+	      <version>${tomcat.dbcp.version}</version>
+	  </dependency>
      </dependencies>
 </project>

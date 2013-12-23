@@ -18,7 +18,7 @@ public class FileDownloader {
 	  private String downloadUrl;
 	  private final String USER_AGENT = "Mozilla/5.0";
 	  
-	public FileDownloader(List<String> cookies,String id) {
+	public FileDownloader(String id) {
 		this.setCookies(cookies);
 		this.downloadUrl="http://210.212.85.155/file/download.php?id="+id;		
 	}

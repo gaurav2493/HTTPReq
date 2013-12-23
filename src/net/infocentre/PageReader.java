@@ -16,7 +16,7 @@ public abstract class PageReader {
 	  
 	private final String USER_AGENT = "Mozilla/5.0";
 	
-	protected abstract void parseContents(String htmlTableContent);
+	protected abstract List<String[]> parseContents(String htmlTableContent);
 	protected abstract String getLink(int pageID);
 	
 	  protected String GetPageContent(String url) {

@@ -1,4 +1,7 @@
 package net.infocentre;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -13,28 +16,36 @@ public class ViewNoticesPageReader extends PageReader {
 	}
  
   @Override
-  protected void parseContents(String htmlTableContent)
+  protected List<String[]> parseContents(String htmlTableContent)
   {
 
 	  Document doc = Jsoup.parse(htmlTableContent);
 	  int i=0;
+	  List<String[]> fileList=new ArrayList<String[]>();
+	  String[] fileArray=null;
 		Element loginform = doc.getElementsByTag("table").get(4);
-		System.out.println("Date\tSubject\tPostedBy\tlink");
 		Elements inputElements = loginform.getElementsByTag("td");
 		for (Element inputElement : inputElements) {
 			
 			String data = inputElement.html();
-			
+			if(i==0)
+			{
+				fileArray = new String[4];
+				fileList.add(fileArray);
+			}
 			if(++i==4)
 			{
 				String link= inputElement.getElementsByTag("a").first().attr("href");
-				System.out.println(link);
+				fileArray[i-1]=link.substring(19,link.length());
 				i=0;
 			}
 			else
-				System.out.print(data+"\t");
+			{
+				fileArray[i-1]=data;
+			}
 			
 		}
+		return fileList;
   }
 
 @Override

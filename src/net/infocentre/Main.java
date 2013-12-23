@@ -7,42 +7,33 @@ public class Main {
 	
 	  public static void main(String[] args) throws Exception{
 		  		  
-			List<String> cookies=InfoAuthenticator.getCookies();
-			//printNotices(cookies);
-			//printANotice(cookies);
-			//FileDownloader fd=new FileDownloader(cookies,"10622");
+			InfoAuthenticator.authenticate();
+			printNotices();
+			//printANotice();
+			//FileDownloader fd=new FileDownloader("10622");
 			//fd.saveDownloadTo("D:\\");
-			printFiles(cookies);
+			printFiles();
 		
 	  }	  
 
 
-static void printNotices(List<String> cookies)
+static void printNotices()
 {
 	ViewNoticesPageReader http = new ViewNoticesPageReader();
-	http.setCookies(cookies);
-	int pageno=0;
-	Scanner sc = new Scanner(System.in);
-	while(true)
+	List<String[]> list=http.parseContents(http.GetPageContent(http.getLink(1)));
+	for (int i=0;i<list.size();i++)
 	{
-		//System.out.println("Enter page no or 0 to quit");
-		pageno=1;
-		if(pageno==0)
-			break;
-		else
+		String[] myarr=list.get(i);
+		for (int j=0;j<myarr.length;j++)
 		{
-			String result = http.GetPageContent(http.getLink(pageno));
-			//System.out.println(result);
-			http.parseContents(result);
+			System.out.print(myarr[j]+"  ");
 		}
-		break;
+		System.out.println();
 	}
-	sc.close();
   }
-static void printANotice(List<String> cookies)
+static void printANotice()
 {
 	NoticeExtractor http=new NoticeExtractor();
-	http.setCookies(cookies);
 	int noticeId=0;
 	Scanner sc = new Scanner(System.in);
 	while(true)
@@ -55,27 +46,19 @@ static void printANotice(List<String> cookies)
 	}
 	sc.close();
   }
-static void printFiles(List<String> cookies)
+static void printFiles()
 {
 	ViewFilesPageReader pr=new ViewFilesPageReader();
-	pr.setCookies(cookies);
-	int pageno=0;
-	Scanner sc = new Scanner(System.in);
-	while(true)
+	List<String[]> list=pr.parseContents(pr.GetPageContent(pr.getLink(1)));
+	for (int i=0;i<list.size();i++)
 	{
-		//System.out.println("Enter page no or 0 to quit");
-		pageno=1;
-		if(pageno==0)
-			break;
-		else
+		String[] myarr=list.get(i);
+		for (int j=0;j<myarr.length;j++)
 		{
-			String result = pr.GetPageContent(pr.getLink(pageno));
-			//System.out.println(result);
-			pr.parseContents(result);
+			System.out.print(myarr[j]+"  ");
 		}
-		break;
+		System.out.println();
 	}
-	sc.close();
 }
 }
 

@@ -1,5 +1,7 @@
 package net.infocentre;
 
+import java.util.List;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -9,13 +11,14 @@ public class NoticeExtractor extends PageReader {
 	
 
 	@Override
-	protected void parseContents(String htmlTableContent) {
+	protected List<String[]> parseContents(String htmlTableContent) {
 		Document doc = Jsoup.parse(htmlTableContent);
 		//  int i=0;
 			Element loginform = doc.getElementsByTag("table").get(3);
 			
 			String notice=loginform.getElementsByTag("p").get(2).html();
 			System.out.println(StringEscapeUtils.unescapeHtml(notice));
+			return null;
 	}
 
 	@Override

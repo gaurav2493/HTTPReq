@@ -17,7 +17,7 @@ public class InfoAuthenticator {
 	private final static String USER_AGENT = "Mozilla/5.0";
 	//private final String url = "http://210.212.85.155/login/index.php";
 	
-	 public static List<String> getCookies() throws Exception {
+	 public static List<String> authenticate() throws Exception {
 		 
 		    CookieHandler.setDefault(new CookieManager());		 	
 		 	String postParams = getFormParams();
