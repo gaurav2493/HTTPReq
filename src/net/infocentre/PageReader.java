@@ -19,7 +19,7 @@ public abstract class PageReader {
 	protected abstract List<String[]> parseContents(String htmlTableContent);
 	protected abstract String getLink(int pageID);
 	
-	  protected String GetPageContent(String url) {
+	  public String GetPageContent(String url) {
 		  
 			URL obj = null;
 			try {

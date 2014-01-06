@@ -17,7 +17,7 @@ protected static String filesLink = "http://210.212.85.155/file/files.php";
 	}
 
 	@Override
-	protected List<String[]> parseContents(String htmlTableContent) {
+	public List<String[]> parseContents(String htmlTableContent) {
 		 Document doc = Jsoup.parse(htmlTableContent);
 		 List<String[]> fileList=new ArrayList<String[]>();
 		  int i=0;
@@ -48,7 +48,7 @@ protected static String filesLink = "http://210.212.85.155/file/files.php";
 	}
 
 	@Override
-	protected String getLink(int pageID) {
+	public String getLink(int pageID) {
 		return filesLink+"?start="+(pageID-1)*15;
 	}
 

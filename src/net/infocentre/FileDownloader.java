@@ -7,6 +7,7 @@ import java.net.ProtocolException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import org.apache.commons.io.IOUtils;
@@ -18,18 +19,18 @@ public class FileDownloader {
 	  private String downloadUrl;
 	  private final String USER_AGENT = "Mozilla/5.0";
 	  
-	public FileDownloader(String id) {
+	public FileDownloader(int id) {
 		this.setCookies(cookies);
 		this.downloadUrl="http://210.212.85.155/file/download.php?id="+id;		
 	}
-	  public boolean saveDownloadTo(String path)
+	  public String saveDownloadTo(String path)
 	  {
-		  GetPageContent(downloadUrl,path);
-		  return true;
+		  return GetPageContent(downloadUrl,path);
 	  }	
 	  private String GetPageContent(String url,String path) {
 		  
 			URL obj = null;
+			String savedPath="";
 			try {
 				obj = new URL(url);
 			} catch (MalformedURLException e) {
@@ -76,12 +77,12 @@ public class FileDownloader {
 			// Get the response cookies
 			setCookies(conn.getHeaderFields().get("Set-Cookie"));
 		 try {
-			Files.write(Paths.get(path+filename.substring(21,filename.length()-1)), bytes);
+			Files.write(Paths.get(savedPath= path+filename.substring(21,filename.length()-1)+new Date().getTime()), bytes);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-			return null;
+			return savedPath;
 		 
 		  }
 		 

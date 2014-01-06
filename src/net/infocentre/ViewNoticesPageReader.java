@@ -16,7 +16,7 @@ public class ViewNoticesPageReader extends PageReader {
 	}
  
   @Override
-  protected List<String[]> parseContents(String htmlTableContent)
+public List<String[]> parseContents(String htmlTableContent)
   {
 
 	  Document doc = Jsoup.parse(htmlTableContent);
@@ -49,7 +49,7 @@ public class ViewNoticesPageReader extends PageReader {
   }
 
 @Override
-protected String getLink(int pageID) {
+public String getLink(int pageID) {
 	return noticeLink+"?start="+(pageID-1)*15;
 } 
 

@@ -1,0 +1,29 @@
+<notices>
+  <notice>
+    <notice-id></notice-id>
+    <date></date>
+    <subject></subject>
+    <postedby></postedby>
+  </notice>
+</notices>
+
+<files>
+  <file>
+    <file-id></file-id>
+    <date></date>
+    <description></description>
+    <subject></subject>
+    <postedby></postedby>
+  </file>
+</files>
+
+{
+  "notices": {
+    "notice": {
+      "notice-id": "123",
+      "date": "12/23/45",
+      "subject": "my sub",
+      "postedby": "someone"
+    }
+  }
+}

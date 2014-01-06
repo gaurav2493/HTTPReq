@@ -10,9 +10,9 @@ public class Main {
 			InfoAuthenticator.authenticate();
 			printNotices();
 			//printANotice();
-			//FileDownloader fd=new FileDownloader("10622");
-			//fd.saveDownloadTo("D:\\");
-			printFiles();
+			FileDownloader fd=new FileDownloader(10691);
+			fd.saveDownloadTo("D:\\");
+			//printFiles();
 		
 	  }	  
 
