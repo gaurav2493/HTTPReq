@@ -7,12 +7,15 @@ public class Main {
 	
 	  public static void main(String[] args) throws Exception{
 		  		  
-			InfoAuthenticator.authenticate();
+			InfoAuthenticator.authenticate("11it056","9013669956");
+			//System.out.print(InfoAuthenticator.validate("11it056","9013669956"));
 			printNotices();
 			//printANotice();
 			FileDownloader fd=new FileDownloader(10691);
 			fd.saveDownloadTo("D:\\");
 			//printFiles();
+			
+			//System.out.print(InfoAuthenticator.validate("",""));
 		
 	  }	  
 
